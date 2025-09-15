@@ -1,0 +1,6 @@
+Card Personale
+Usarla per mostrare Repeater Field
+
+Prossima lezione 
+Repeater Field
+Carosello con JS/Jquery/Slick
