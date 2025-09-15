@@ -33,8 +33,8 @@ add_action( 'wp_enqueue_scripts', 'main_styles' );
 
 if( class_exists('acf') ) {
     function register_acf_blocks() {
-    register_block_type( __DIR__ . '/blocks/testimonial' );
-    register_block_type( __DIR__ . '/blocks/personal-card' );
+        register_block_type( __DIR__ . '/blocks/testimonial' );
+        register_block_type( __DIR__ . '/blocks/personal-card' );
     }
     add_action('init', 'register_acf_blocks');
 }

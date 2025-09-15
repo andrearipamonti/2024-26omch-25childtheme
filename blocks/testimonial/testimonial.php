@@ -30,7 +30,7 @@ if ( $author ) {
 // ancora html
 $anchor = '';
 if ( ! empty( $block['anchor'] ) ) {
-    $anchor = 'id="' . esc_attr( $block['anchor'] ) . '" ';
+    $anchor = esc_attr( $block['anchor'] );
 }
 
 // Classi CSS

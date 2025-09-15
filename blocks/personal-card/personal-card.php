@@ -1,28 +1,27 @@
-
 <?php
 
-$image = get_field('image_profile');
-$name = get_field('name_lastname');
-$role = get_field('role_profile'); 
-$bio = get_field('bio');
-$social_1 = get_field('social_1');
-$social_2 = get_field('social_2');
-$social_3 = get_field('social_3');
-$website = get_field('website');
+    $image = get_field('image_profile');
+    $name = get_field('name_lastname');
+    $role = get_field('role_profile'); 
+    $bio = get_field('bio');
+    $social_1 = get_field('social_1');
+    $social_2 = get_field('social_2');
+    $social_3 = get_field('social_3');
+    $website = get_field('website');
 
-// ancora html
-$anchor = '';
-if ( ! empty( $block['anchor'] ) ) {
-    $anchor = 'id="' . esc_attr( $block['anchor'] ) . '" ';
-}
+    // ancora html
+    $anchor = '';
+    if ( ! empty( $block['anchor'] ) ) {
+        $anchor = esc_attr( $block['anchor'] );
+    }
 
-$class_name = 'personal-card';
-if ( ! empty( $block['className'] ) ) {
-    $class_name .= ' ' . $block['className'];
-}
-if ( ! empty( $block['align'] ) ) {
-    $class_name .= ' align' . $block['align'];
-}
+    $class_name = 'personal-card';
+    if ( ! empty( $block['className'] ) ) {
+        $class_name .= ' ' . $block['className'];
+    }
+    if ( ! empty( $block['align'] ) ) {
+        $class_name .= ' align' . $block['align'];
+    }
 
 ?>
 
@@ -33,7 +32,10 @@ if ( ! empty( $block['align'] ) ) {
                     $image['ID'],
                     'full',
                     '',
-                    array( 'class' => 'personal-card__img' ) 
+                    array( 
+                        'alt' => $image['alt'],
+                        'class' => 'personal-card__img'
+                    ) 
                 ); 
             ?>
         </figure>
@@ -47,7 +49,7 @@ if ( ! empty( $block['align'] ) ) {
         <div class="personal-card__role">
             <span><?php echo esc_html( $role ); ?></span>
         </div>
-     <?php endif; ?>
+    <?php endif; ?>
 
     <?php if ( $bio ) : ?>
         <div class="personal-card__bio">
