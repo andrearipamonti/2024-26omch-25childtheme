@@ -1,0 +1,23 @@
+{
+    "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+    "apiVersion": 2,
+    "name": "acf/testimonial",
+    "title": "Testimonial",
+    "description": "Un blocco custom per poter mostrare una testimonianza.",
+    "style": [ 
+        "file:./testimonial.css"
+    ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": [
+        "testimonial", 
+        "quote"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "testimonial.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

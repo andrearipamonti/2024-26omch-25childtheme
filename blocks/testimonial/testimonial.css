@@ -1,0 +1,87 @@
+.testimonial {
+    --testimonial-font-family: Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif; 
+    --testimonial-font-size: 1.5rem;
+    --testimonial-spacing: 0.5rem;
+}
+
+.testimonial {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.testimonial > * {
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    width: 100%;
+    word-break: break-word;
+}
+
+.testimonial__blockquote {
+    align-self: center;
+    font-family: var(--testimonial-font-family);
+    font-size: var(--testimonial-font-size);
+    line-height: 1.18;
+    padding: calc(4 * var(--testimonial-spacing)) calc(4.5 * var(--testimonial-spacing)) calc(2.5 * var(--testimonial-spacing));
+    position: relative;
+}
+
+.testimonial__blockquote::before {
+    color: currentColor;
+    content: "“";
+    display: block;
+    font-family: var(--testimonial-font-family);
+    font-size: calc(8 * var(--testimonial-spacing));
+    position: absolute;
+    top: calc(-1.25 * var(--testimonial-spacing));
+}
+
+.testimonial__attribution {
+    font-family: var(--wp--preset--font-family--system-font);
+    font-size: calc(0.6 * var(--testimonial-font-size));
+    line-height: 1.5;
+    margin-top: calc(2 * var(--testimonial-spacing));
+}
+
+.testimonial__author {
+    font-style: normal;
+    font-weight: 700;
+}
+
+.testimonial__role {
+    display: block;
+}
+
+.testimonial__image {
+    box-sizing: border-box;
+    height: 100%;
+    line-height: 0;
+    margin-bottom: 0;
+}
+
+.testimonial__image img {
+    height: 100%;
+}
+
+.testimonial__img {
+    box-sizing: border-box;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 600px) {
+    .testimonial {
+        flex-wrap: nowrap;
+    }
+
+    .testimonial__col:first-of-type {
+        flex-basis: 64%;
+    }
+
+    .testimonial__col:last-of-type {
+        flex-basis: 38%;
+    }
+}

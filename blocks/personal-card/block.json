@@ -1,0 +1,24 @@
+{
+    "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+    "apiVersion": 2,
+    "name": "acf/personal-card",
+    "title": "Card Personale",
+    "description": "Un blocco custom per poter mostrare una card personale",
+    "style": [ 
+        "file:./personal-card.css"
+    ],
+    "category": "widgets",
+    "icon": "",
+    "keywords": [
+        "card", 
+        "personale", 
+        "bio"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "personal-card.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

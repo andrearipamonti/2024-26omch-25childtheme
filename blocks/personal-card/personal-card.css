@@ -1,0 +1,44 @@
+
+.personal-card {
+    padding: 1em;
+    border-radius: 0.25em;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.personal-card .personal-card__img {
+    width: 100%;
+    max-width: 10em;
+    border-radius: 50%;
+    display: block;
+    height: 100%;
+    margin: auto;
+}
+
+.personal-card .personal-card__name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.5em 0 0.2em 0;
+}
+
+.personal-card .personal-card__role {
+    font-size: 1em;
+    font-weight: 500;
+}
+.personal-card .personal-card__bio {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.personal-card__socials {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.personal-card__socials a {
+    text-decoration: none;
+}

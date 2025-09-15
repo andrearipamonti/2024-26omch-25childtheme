@@ -1,0 +1,144 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 3, 
+    "settings": {
+        "color": {
+            "custom": false,
+            "customGradient": true,
+            "duotone": [
+                {
+                    "name": "Blue to Orange",
+                    "slug": "blue-to-orange",
+                    "colors": [
+                        "#14213d",
+                        "#fca311"
+                    ]
+                },
+                {
+                    "name": "Orange to Light Gray",
+                    "slug": "orange-to-light-gray",
+                    "colors": [
+                        "#fca311",
+                        "#e5e5e5"
+                    ]
+                },
+                {
+                    "name": "Light Gray to White",
+                    "slug": "light-gray-to-white",
+                    "colors": [
+                        "#e5e5e5",
+                        "#ffffff"
+                    ]
+                }
+            ],
+            "gradients": [
+                {
+                    "name": "Blue to Orange",
+                    "slug": "blue-to-orange",
+                    "gradient": "linear-gradient(135deg, #14213d 0%, #fca311 100%)"
+                },
+                {
+                    "name": "Orange to Light Gray",
+                    "slug": "orange-to-light-gray",
+                    "gradient": "linear-gradient(135deg, #fca311 0%, #e5e5e5 100%)"
+                },
+                {
+                    "name": "Light Gray to White",
+                    "slug": "light-gray-to-white",
+                    "gradient": "linear-gradient(135deg, #e5e5e5 0%, #ffffff 100%)"
+                }
+            ],
+            "link": true,
+            "palette": [
+                {
+                    "name": "Blue",
+                    "slug": "blue",
+                    "color": "#14213d"
+                },
+                {
+                    "name": "Orange",
+                    "slug": "orange",
+                    "color": "#fca311"
+                },
+                {
+                    "name": "Light Gray",
+                    "slug": "light-gray",
+                    "color": "#e5e5e5"
+                },
+                {
+                    "name": "Bianco",
+                    "slug": "white",
+                    "color": "#ffffff"
+                }, 
+                {
+                    "name": "Nero",
+                    "slug": "black",
+                    "color": "#000000"
+                }
+            ]
+        }, 
+        "typography": {
+            "fontFamilies": [
+                {
+                    "fontFamily": "Roboto, sans-serif",
+                    "name": "Roboto",
+                    "slug": "roboto",
+                    "fontFace": [
+                        {
+                            "fontFamily": "Roboto",
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "src": [
+                                "file:./assets/fonts/roboto/Roboto-Regular.woff2",
+                                "file:./assets/fonts/roboto/Roboto-Regular.woff"
+                            ]
+                        },
+                        {
+                            "fontFamily": "Roboto",
+                            "fontStyle": "normal",
+                            "fontWeight": "700",
+                            "src": [
+                                "file:./assets/fonts/roboto/Roboto-Bold.woff2",
+                                "file:./assets/fonts/roboto/Roboto-Bold.woff"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "fontFamily": "Domine, serif",
+                    "name": "Domine",
+                    "slug": "domine",
+                    "fontFace": [
+                        {
+                            "fontFamily": "Domine",
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            
+                            "src": [
+                                "file:./assets/fonts/domine/Domine-Regular.woff2",
+                                "file:./assets/fonts/domine/Domine-Regular.woff"
+                            ]
+                        },
+                        {
+                            "fontFamily": "Domine",
+                            "fontStyle": "normal",
+                            "fontWeight": "700",
+                            "src": [
+                                "file:./assets/fonts/domine/Domine-Bold.woff2",
+                                "file:./assets/fonts/domine/Domine-Bold.woff"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }, 
+    "styles": {
+        "typography": {
+            "fontFamily": "var(--wp--preset--font-family--roboto)"
+        },
+        "color": {
+            "background": "var(--wp--preset--color--white)"
+        }
+    }
+}
