@@ -1,0 +1,24 @@
+{
+    "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+    "apiVersion": 2,
+    "name": "acf/progress-bar",
+    "title": "Barra di progresso",
+    "description": "Un blocco custom per poter mostrare una barra di progresso",
+    "style": [ 
+        "file:./progress-bar.css"
+    ],
+    "category": "design",
+    "icon": "",
+    "keywords": [
+        "progress",
+        "bar",
+        "design"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "progress-bar.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}
