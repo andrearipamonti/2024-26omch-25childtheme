@@ -38,13 +38,15 @@ function main_styles() {
 add_action( 'wp_enqueue_scripts', 'main_styles' );
 
 function main_scripts() {
+
     wp_enqueue_script( 
         'main', // ID, NOME UNIVOCO, HANDLE
         get_stylesheet_directory_uri() . '/assets/scripts/main.js', 
         array('jquery'), // Dipendenze
-        '1.8.1', // versione
+        '1.0', // versione
         true // true = nel footer, false = nell'header
     );
+
     wp_register_script( 
         'slick', // ID, NOME UNIVOCO, HANDLE
         get_stylesheet_directory_uri() . '/assets/packages/slick-1.8.1/slick/slick.min.js', // Percorso
