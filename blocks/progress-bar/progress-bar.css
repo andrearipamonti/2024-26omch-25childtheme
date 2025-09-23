@@ -8,18 +8,23 @@
     box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
 }
 
-
 .progress-bar .number {
     display: flex;
-    
+    align-items: flex-end;
+    gap: 0.15em;
+    line-height: 1;
+    margin-bottom: 0.25em;
 }
 
 .progress-bar .number small {
     font-size: 0.8rem;
+    line-height: 1;
+    
 }
 
 .progress-bar .bar {
     width: 100%;
+    
     height: 1em;
     border-radius: 1em;
     display: block;

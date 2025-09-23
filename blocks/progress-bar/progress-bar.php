@@ -21,7 +21,7 @@
 ?>
 
 <div id="<?php echo $anchor ?>" class="<?php echo $class_name ?>">
-    <span class="number"><?= $percentage ?><small>%</small></span>
+    <span class="number"><?php echo $percentage ?><small>%</small></span>
     <span class="bar-container">
         <span class="bar" style="max-width: <?php echo esc_attr( $percentage ); ?>%; background-color: <?php echo esc_attr( $color ) ?>;"></span>
     </span>
