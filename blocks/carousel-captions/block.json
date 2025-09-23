@@ -1,0 +1,31 @@
+{
+    "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+    "apiVersion": 2,
+    "name": "acf/carousel-captions",
+    "title": "Carosello con didascalie",
+    "description": "Un blocco custom per poter mostrare un carosello di immagini con didascalie personalizzate.",
+    "style": [ 
+        "slick",
+        "file:./carousel-captions.css"
+    ],
+    "script": [
+        "slick",
+        "carousel-captions"
+    ],
+    "category": "widgets",
+    "icon": "",
+    "keywords": [
+        "Carosello", 
+        "immagini",
+        "slider",
+        "gallery"
+    ],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "carousel-captions.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false
+    }
+}

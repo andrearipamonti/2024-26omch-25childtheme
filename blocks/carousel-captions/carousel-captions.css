@@ -1,0 +1,6 @@
+.carousel-captions img {
+    max-width: 640px;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+}
