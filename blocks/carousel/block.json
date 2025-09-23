@@ -1,0 +1,31 @@
+{
+    "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+    "apiVersion": 2,
+    "name": "acf/carousel",
+    "title": "Carosello",
+    "description": "Un blocco custom per poter mostrare un carosello di immagini",
+    "style": [ 
+        "slick",
+        "file:./carousel.css"
+    ],
+    "script": [
+        "slick",
+        "carousel"
+    ],
+    "category": "widgets",
+    "icon": "",
+    "keywords": [
+        "Carosello", 
+        "immagini",
+        "slider",
+        "gallery"
+    ],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "carousel.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false
+    }
+}
