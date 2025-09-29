@@ -118,6 +118,7 @@ if( class_exists('acf') ) {
         register_block_type( __DIR__ . '/blocks/modal' );
         register_block_type( __DIR__ . '/blocks/personal-card' );
         register_block_type( __DIR__ . '/blocks/progress-bar' );
+        register_block_type( __DIR__ . '/blocks/star-rating' );
         register_block_type( __DIR__ . '/blocks/testimonial' );
     }
     add_action('init', 'register_acf_blocks');

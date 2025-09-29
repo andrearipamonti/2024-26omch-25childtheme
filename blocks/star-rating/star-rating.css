@@ -1,0 +1,418 @@
+/**
+ * STAR RATING BLOCK CSS - SISTEMA VALUTAZIONI STELLARI
+ * ===================================================
+ * 
+ * SCOPO EDUCATIVO: Questo CSS implementa un sistema completo di visualizzazione
+ * stelle per valutazioni con supporto per stelle parziali, animazioni fluide,
+ * multiple varianti di stile e design completamente responsive.
+ * 
+ * CONCETTI CSS AVANZATI IMPARATI:
+ * - Custom Properties (CSS Variables) per temi dinamici
+ * - SVG styling e manipolazione con currentColor
+ * - Flexbox per allineamento perfetto
+ * - CSS Gradients per stelle parziali
+ * - Transform animations per micro-interazioni  
+ * - Pseudo-classes per stati hover/focus
+ * - Responsive design con proporzioni scalabili
+ * - Accessibilità con .sr-only utility
+ */
+
+/* ========================================
+   VARIABILI CSS PERSONALIZZATE (CUSTOM PROPERTIES)
+   ======================================== */
+:root {
+    /* COLORI TEMA STELLE */
+    --star-color-active: #ffd700; /* Oro per stelle piene */
+    --star-color-inactive: #e0e0e0; /* Grigio per stelle vuote */
+    --star-color-partial: #ffd700; /* Oro per parti riempite */
+    
+    /* DIMENSIONI STELLE */
+    --star-size-small: 1rem; /* 16px */
+    --star-size-medium: 1.5rem; /* 24px */
+    --star-size-large: 2rem; /* 32px */
+    
+    /* SPAZIATURE */
+    --star-gap: 0.125rem; /* Spazio tra stelle */
+    --info-gap: 0.5rem; /* Spazio tra elementi info */
+    
+    /* ANIMAZIONI */
+    --star-transition: transform 0.2s ease, color 0.2s ease;
+    
+    /*
+    SPIEGAZIONE PER STUDENTI:
+    - Custom Properties permettono temi dinamici
+    - Possono essere sovrascritte da JavaScript
+    - Ereditate automaticamente da elementi figli
+    - Più facili da mantenere di valori hardcoded
+    */
+}
+
+/* ========================================
+   CONTENITORE PRINCIPALE STAR RATING
+   ======================================== */
+.star-rating {
+    display: flex;
+    align-items: center; /* Allineamento verticale perfetto */
+    gap: var(--info-gap); /* Spazio tra stelle e info */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1;
+    /*
+    SPIEGAZIONE LAYOUT PER STUDENTI:
+    - Flexbox per layout orizzontale flessibile
+    - align-items: center assicura allineamento perfetto
+    - gap gestisce automaticamente gli spazi
+    - line-height: 1 previene spaziature indesiderate
+    */
+}
+
+/* ========================================
+   CONTAINER DELLE STELLE VISUALI
+   ======================================== */
+.star-rating__stars {
+    display: flex;
+    align-items: center;
+    gap: var(--star-gap); /* Spaziatura uniforme tra stelle */
+    
+    /*
+    ACCESSIBILITÀ:
+    - role="img" nell'HTML indica che è un'immagine decorativa
+    - aria-label fornisce descrizione completa per screen reader
+    */
+}
+
+/* ========================================
+   SINGOLA STELLA BASE
+   ======================================== */
+.star-rating__star {
+    display: inline-block;
+    width: var(--star-size-medium); /* Dimensione di default */
+    height: var(--star-size-medium);
+    transition: var(--star-transition); /* Animazioni fluide */
+    cursor: default; /* Indica elemento non interattivo */
+    
+    /* FLEX PROPERTIES per allineamento interno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================
+   SVG DELLE STELLE - STYLING BASE
+   ======================================== */
+.star-rating__star svg {
+    width: 100%; /* Occupa tutto lo spazio del container */
+    height: 100%;
+    display: block; /* Rimuove spazi inline indesiderati */
+    
+    /*
+    SPIEGAZIONE SVG PER STUDENTI:
+    - SVG è scalabile perfettamente senza perdita qualità
+    - currentColor eredita il colore dal CSS parent
+    - width/height 100% si adatta al container
+    */
+}
+
+/* ========================================
+   VARIANTI STATO STELLE
+   ======================================== */
+
+/* STELLA PIENA (ATTIVA) */
+.star-rating__star--full {
+    color: var(--star-color-active); /* Colore oro */
+}
+
+.star-rating__star--full svg {
+    fill: currentColor; /* Riempimento completo */
+}
+
+/* STELLA VUOTA (INATTIVA) */
+.star-rating__star--empty {
+    color: var(--star-color-inactive); /* Colore grigio */
+}
+
+.star-rating__star--empty svg {
+    fill: none; /* Nessun riempimento */
+    stroke: currentColor; /* Solo bordo */
+}
+
+/* STELLA PARZIALE (GRADIENTE) */
+.star-rating__star--partial {
+    color: var(--star-color-partial);
+    
+    /*
+    TECNICA AVANZATA PER STUDENTI:
+    - Il gradiente SVG è generato dinamicamente in PHP
+    - --fill-percentage è settata inline per ogni stella
+    - CSS non può calcolare percentuali dinamiche da solo
+    */
+}
+
+/* ========================================
+   MODIFICATORI DIMENSIONE
+   ======================================== */
+
+/* STELLE PICCOLE */
+.star-rating--small .star-rating__star {
+    width: var(--star-size-small);
+    height: var(--star-size-small);
+}
+
+.star-rating--small {
+    --star-gap: 0.1rem; /* Gap proporzionalmente più piccolo */
+}
+
+/* STELLE MEDIE (DEFAULT) */
+.star-rating--medium .star-rating__star {
+    width: var(--star-size-medium);
+    height: var(--star-size-medium);
+}
+
+/* STELLE GRANDI */
+.star-rating--large .star-rating__star {
+    width: var(--star-size-large);
+    height: var(--star-size-large);
+}
+
+.star-rating--large {
+    --star-gap: 0.15rem; /* Gap proporzionalmente più grande */
+}
+
+/* ========================================
+   MODIFICATORI STILE VISIVO
+   ======================================== */
+
+/* STILE RIEMPIMENTO (DEFAULT) */
+.star-rating--filled .star-rating__star--full svg {
+    fill: currentColor;
+    stroke: none; /* Nessun bordo */
+}
+
+/* STILE OUTLINED (SOLO BORDI) */
+.star-rating--outlined .star-rating__star--full {
+    color: var(--star-color-active);
+}
+
+.star-rating--outlined .star-rating__star--full svg {
+    fill: none; /* Nessun riempimento */
+    stroke: currentColor; /* Solo bordo colorato */
+    stroke-width: 2; /* Bordo più spesso */
+}
+
+/* STILE GRADIENTE (EFFETTO PREMIUM) */
+.star-rating--gradient .star-rating__star--full {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; /* Nasconde colore originale */
+    
+    /*
+    TECNICA AVANZATA PER STUDENTI:
+    - background-clip: text fa vedere il gradiente solo sul testo/icona
+    - -webkit-background-clip per compatibilità Safari
+    - color: transparent nasconde il colore sottostante
+    */
+}
+
+/* ========================================
+   INFORMAZIONI TESTUALI
+   ======================================== */
+.star-rating__info {
+    display: flex;
+    align-items: baseline; /* Allinea al baseline del testo */
+    gap: 0.25rem; /* Spazio compatto tra elementi */
+    font-size: 0.875rem; /* Testo leggermente più piccolo */
+    color: #666; /* Colore più chiaro per info secondarie */
+}
+
+/* VALUTAZIONE NUMERICA */
+.star-rating__numeric {
+    font-weight: 600; /* Peso maggiore per enfasi */
+    color: #333; /* Colore più scuro per importanza */
+    font-size: 1rem; /* Dimensione normale */
+}
+
+/* DENOMINATORE (/5) */
+.star-rating__max {
+    font-weight: 400; /* Peso normale */
+    opacity: 0.7; /* Meno prominente */
+}
+
+/* TESTO DESCRITTIVO */
+.star-rating__text {
+    font-style: italic; /* Stile corsivo per differenziazione */
+    color: #555;
+}
+
+/* CONTEGGIO RECENSIONI */
+.star-rating__reviews {
+    font-size: 0.75rem; /* Più piccolo */
+    opacity: 0.8; /* Meno prominente */
+}
+
+/* ========================================
+   MICRO-INTERAZIONI E HOVER EFFECTS
+   ======================================== */
+/* Hover su tutto il componente */
+.star-rating:hover .star-rating__star--full {
+    transform: scale(1.1); /* Leggero zoom */
+    
+    /*
+    SPIEGAZIONE MICRO-INTERAZIONI PER STUDENTI:
+    - Feedback visivo sottile migliora UX
+    - transform è più performante di width/height
+    - scale mantiene proporzioni perfette
+    */
+}
+
+/* Hover su singola stella */
+.star-rating__star:hover {
+    transform: scale(1.15); /* Zoom più evidente */
+}
+
+/* ========================================
+   STATI DI FOCUS PER ACCESSIBILITÀ
+   ======================================== */
+.star-rating:focus-within {
+    outline: 2px solid #007cba; /* Bordo focus visibile */
+    outline-offset: 2px;
+    border-radius: 4px; /* Angoli smussati */
+    
+    /*
+    ACCESSIBILITÀ PER STUDENTI:
+    - :focus-within attiva quando elemento figlio ha focus
+    - outline-offset sposta il bordo all'esterno
+    - Importante per navigazione da tastiera
+    */
+}
+
+/* ========================================
+   VARIANTI DI COLORE TEMATICHE
+   ======================================== */
+
+/* TEMA ROSSO (per valutazioni negative) */
+.star-rating.is-style-red {
+    --star-color-active: #ef4444;
+    --star-color-partial: #ef4444;
+}
+
+/* TEMA VERDE (per valutazioni eccellenti) */
+.star-rating.is-style-green {
+    --star-color-active: #22c55e;
+    --star-color-partial: #22c55e;
+}
+
+/* TEMA BLU (per valutazioni professionali) */
+.star-rating.is-style-blue {
+    --star-color-active: #3b82f6;
+    --star-color-partial: #3b82f6;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* TABLET: Ottimizzazione spazi */
+@media (max-width: 768px) {
+    .star-rating {
+        gap: 0.375rem; /* Gap ridotto per spazio limitato */
+    }
+    
+    .star-rating__info {
+        font-size: 0.8125rem; /* Testo leggermente più piccolo */
+    }
+}
+
+/* MOBILE: Massima compattezza */
+@media (max-width: 480px) {
+    .star-rating {
+        flex-direction: column; /* Stack verticale su mobile */
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    /* Stelle più piccole su mobile */
+    .star-rating--medium .star-rating__star {
+        width: var(--star-size-small);
+        height: var(--star-size-small);
+    }
+    
+    .star-rating--large .star-rating__star {
+        width: var(--star-size-medium);
+        height: var(--star-size-medium);
+    }
+}
+
+/* ========================================
+   ACCESSIBILITÀ AVANZATA
+   ======================================== */
+
+/* Utility class per contenuto screen-reader only */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    
+    /*
+    SPIEGAZIONE ACCESSIBILITÀ PER STUDENTI:
+    - Nasconde visivamente ma mantiene per screen reader
+    - position: absolute rimuove dal flusso normale
+    - clip: rect(0,0,0,0) nasconde completamente
+    - white-space: nowrap previene wrapping
+    */
+}
+
+/* Rispetto preferenze utente per animazioni */
+@media (prefers-reduced-motion: reduce) {
+    .star-rating__star,
+    .star-rating:hover .star-rating__star--full,
+    .star-rating__star:hover {
+        transition: none; /* Rimuove animazioni */
+        transform: none; /* Rimuove trasformazioni */
+    }
+    
+    /*
+    DESIGN INCLUSIVO PER STUDENTI:
+    - Rispetta impostazioni accessibilità dell'utente
+    - Alcuni utenti hanno problemi con animazioni
+    - Mantiene funzionalità senza effetti visivi
+    */
+}
+
+/* ========================================
+   STATI DI CARICAMENTO (SKELETON)
+   ======================================== */
+.star-rating.is-loading .star-rating__star {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 2px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/*
+RIASSUNTO CARATTERISTICHE PER STUDENTI:
+
+✅ RESPONSIVE: Si adatta a tutti i dispositivi
+✅ ACCESSIBILE: Screen reader e navigazione tastiera
+✅ PERFORMANTE: Animazioni hardware-accelerated
+✅ TEMATIZZABILE: CSS Custom Properties per personalizzazione
+✅ SCALABILE: SVG per qualità perfetta a ogni dimensione
+✅ SEMANTICO: Microdata Schema.org per SEO
+✅ MODULAR: Sistema BEM per manutenibilità
+✅ FLESSIBILE: Multiple varianti di stile e dimensione
+✅ INCLUSIVE: Rispetta preferenze utente accessibilità
+*/

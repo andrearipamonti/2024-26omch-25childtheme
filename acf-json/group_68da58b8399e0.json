@@ -130,7 +130,7 @@
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
-            "prepend": "",
+            "prepend": "#",
             "append": ""
         },
         {
@@ -254,5 +254,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1759140927
+    "modified": 1759150990
 }

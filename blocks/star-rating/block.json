@@ -1,29 +1,73 @@
 {
     "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
     "apiVersion": 2,
-    "name": "acf/CAMBIA_QUESTO",
-    "title": "CAMBIA_QUESTO",
-    "description": "CAMBIA_QUESTO",
+    "name": "acf/star-rating", 
+    "title": "⭐ Star Rating",
+    "description": "Sistema completo di valutazioni a stelle con supporto per stelle parziali, animazioni e stili multipli. Include microdata Schema.org per SEO.",
     "style": [ 
-        "file:./CAMBIA_QUESTO.css"
+        "file:./star-rating.css"
     ],
-    "script": [
-        "CAMBIA_QUESTO"
-    ],
-    "category": "CAMBIA_QUESTO",
-    "icon": "",
+    "script": "file:./star-rating.js",
+    "category": "design",
+    "icon": "star-filled",
     "keywords": [
-        "CAMBIA_QUESTO", 
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO"
+        "star",
+        "rating", 
+        "valutazione",
+        "stelle",
+        "recensioni",
+        "feedback",
+        "voto",
+        "qualità"
     ],
+    "example": {
+        "attributes": {
+            "data": {
+                "rating": 4.5,
+                "total_reviews": 127,
+                "rating_text": "Eccellente",
+                "show_numeric": true,
+                "star_size": "medium",
+                "star_style": "filled"
+            }
+        }
+    },
     "acf": {
         "mode": "edit",
-        "renderTemplate": "CAMBIA_QUESTO.php"
+        "renderTemplate": "star-rating.php"
     },
     "supports": {
         "anchor": true,
-        "align": false
-    }
+        "align": ["left", "center", "right"],
+        "className": true,
+        "customClassName": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "styles": [
+        {
+            "name": "default",
+            "label": "Standard",
+            "isDefault": true
+        },
+        {
+            "name": "minimal", 
+            "label": "Minimalista"
+        },
+        {
+            "name": "red",
+            "label": "Rosso"
+        },
+        {
+            "name": "green", 
+            "label": "Verde"
+        },
+        {
+            "name": "blue",
+            "label": "Blu"
+        }
+    ],
+    "textdomain": "twentytwentyfive-child"
 }
