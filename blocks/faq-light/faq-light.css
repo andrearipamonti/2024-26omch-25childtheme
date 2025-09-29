@@ -291,102 +291,148 @@
     */
 }
 
-/* Varianti di stile */
+/* ========================================
+   VARIANTI DI STILE GUTENBERG
+   ======================================== */
+/* VARIANTE MINIMALE: Stile Cards Separate */
 .faq-light.is-style-minimal {
-    background: none;
-    box-shadow: none;
+    background: none; /* Rimuove sfondo contenitore */
+    box-shadow: none; /* Rimuove ombra contenitore */
 }
 
 .faq-light.is-style-minimal .faq-light__container {
-    border-top: none;
+    border-top: none; /* Rimuove bordo superiore */
 }
 
 .faq-light.is-style-minimal .faq-light__item {
     border-bottom: 1px solid #e0e0e0;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-    background-color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px; /* Angoli arrotondati per ogni item */
+    margin-bottom: 0.5rem; /* Spazio tra cards */
+    background-color: #ffffff; /* Sfondo bianco per ogni card */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Ombra leggera per ogni card */
+    /*
+    SPIEGAZIONE DESIGN PATTERN PER STUDENTI:
+    - Ogni FAQ diventa una "card" separata
+    - Più moderno e meno compatto del design standard
+    - Mantiene la stessa funzionalità CSS-only
+    - Solo l'aspetto visivo cambia, non la logica
+    */
 }
 
 .faq-light.is-style-minimal .faq-light__item:last-child {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0; /* Mantiene bordo anche sull'ultimo */
 }
 
-/* Stile colorato */
+/* ========================================
+   VARIANTE COLORATA: Header Evidenziati
+   ======================================== */
 .faq-light.is-style-colored .faq-light__question {
-    background-color: #007cba;
-    color: #ffffff;
+    background-color: #007cba; /* Sfondo colorato per domande */
+    color: #ffffff; /* Testo bianco su sfondo scuro */
 }
 
 .faq-light.is-style-colored .faq-light__question-text {
-    color: #ffffff;
+    color: #ffffff; /* Forza colore bianco per il testo */
 }
 
 .faq-light.is-style-colored .faq-light__icon {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2); /* Sfondo semi-trasparente */
+    color: #ffffff; /* Icona bianca */
 }
 
 .faq-light.is-style-colored .faq-light__question:hover {
-    background-color: #005a87;
+    background-color: #005a87; /* Scurisce al hover */
 }
 
+/* STATO ATTIVO CON COLORI PERSONALIZZATI */
 .faq-light.is-style-colored .faq-light__toggle:checked + .faq-light__question {
-    background-color: #005a87;
+    background-color: #005a87; /* Mantiene colore più scuro quando attivo */
+    /*
+    NOTA PER STUDENTI:
+    - Stessa logica CSS-only della versione standard
+    - Solo i colori cambiano, non la meccanica
+    - Il selettore :checked + funziona identicamente
+    - Dimostra la flessibilità del pattern CSS-only
+    */
 }
 
-/* Responsive Design */
+/* ========================================
+   RESPONSIVE DESIGN: ADATTAMENTO MOBILE
+   ======================================== */
+/* TABLET E MOBILE: Ottimizzazione spazi e dimensioni */
 @media (max-width: 768px) {
     .faq-light {
-        margin: 1.5rem 0;
+        margin: 1.5rem 0; /* Margini ridotti per mobile */
     }
     
     .faq-light__title {
-        font-size: 1.5rem;
-        padding: 1rem 1rem 0 1rem;
+        font-size: 1.5rem; /* Titolo più piccolo */
+        padding: 1rem 1rem 0 1rem; /* Padding ridotto */
         margin-bottom: 1rem;
     }
     
     .faq-light__question {
-        padding: 1rem;
+        padding: 1rem; /* Padding ridotto per touch targets */
     }
     
     .faq-light__question-text {
-        font-size: 1rem;
-        padding-right: 0.75rem;
+        font-size: 1rem; /* Testo leggermente più piccolo */
+        padding-right: 0.75rem; /* Spazio ridotto dall'icona */
     }
     
     .faq-light__icon {
-        width: 1.75rem;
+        width: 1.75rem; /* Icona più piccola ma ancora toccabile */
         height: 1.75rem;
     }
     
     .faq-light__icon::before {
-        font-size: 1.25rem;
+        font-size: 1.25rem; /* Simbolo +/- proporzionato */
     }
     
     .faq-light__answer-content {
-        padding: 0 1rem 1rem 1rem;
-        font-size: 0.9rem;
+        padding: 0 1rem 1rem 1rem; /* Padding ottimizzato per lettura mobile */
+        font-size: 0.9rem; /* Testo leggermente più piccolo */
     }
 }
 
+/* ========================================
+   MOBILE PICCOLO: Massima compattezza
+   ======================================== */
 @media (max-width: 480px) {
     .faq-light__question {
-        padding: 0.75rem;
+        padding: 0.75rem; /* Padding molto compatto */
     }
     
     .faq-light__answer-content {
-        padding: 0 0.75rem 0.75rem 0.75rem;
+        padding: 0 0.75rem 0.75rem 0.75rem; /* Spazi minimi ma leggibili */
     }
 }
 
-/* Accessibilità - riduci animazioni se richiesto */
+/* ========================================
+   ACCESSIBILITÀ: RISPETTO PREFERENZE UTENTE
+   ======================================== */
+/* MEDIA QUERY ACCESSIBILITÀ: prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
     .faq-light__answer,
     .faq-light__icon,
     .faq-light__question {
-        transition: none;
+        transition: none; /* Rimuove tutte le animazioni */
     }
+    /*
+    SPIEGAZIONE ACCESSIBILITÀ PER STUDENTI:
+    - Alcuni utenti hanno problemi con animazioni (epilessia, vertigini)
+    - prefers-reduced-motion rileva questa impostazione del browser
+    - Rimuoviamo le transizioni per questi utenti
+    - L'accordion funziona identicamente, solo senza animazioni
+    - Esempio di design inclusivo e responsabile
+    
+    VANTAGGI CSS-ONLY:
+    1. NESSUN JAVASCRIPT = bundle più leggero
+    2. FUNZIONA SEMPRE = anche se JS è disabilitato
+    3. ACCESSIBILE NATIVAMENTE = input+label è standard HTML
+    4. PERFORMANTE = nessun event listener, solo CSS
+    5. SEMPLICE DA MANTENERE = logica in un solo file
+    6. RESPONSIVE = media queries gestiscono tutto
+    7. PERSONALIZZABILE = varianti con classi CSS
+    */
 }
