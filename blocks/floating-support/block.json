@@ -1,26 +1,24 @@
 {
     "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
     "apiVersion": 2,
-    "name": "acf/CAMBIA_QUESTO",
-    "title": "CAMBIA_QUESTO",
-    "description": "CAMBIA_QUESTO",
+    "name": "acf/floating-support",
+    "title": "Supporto flottante",
+    "description": "Mostra il Supporto flottante.",
     "style": [ 
-        "file:./CAMBIA_QUESTO.css"
+        "file:./floating-support.css"
     ],
     "script": [
-        "CAMBIA_QUESTO"
+        "floating-support"
     ],
-    "category": "CAMBIA_QUESTO",
+    "category": "widgets",
     "icon": "",
     "keywords": [
-        "CAMBIA_QUESTO", 
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO"
+        "Supporto", 
+        "Contatti"
     ],
     "acf": {
         "mode": "edit",
-        "renderTemplate": "CAMBIA_QUESTO.php"
+        "renderTemplate": "floating-support.php"
     },
     "supports": {
         "anchor": true,

@@ -1,0 +1,347 @@
+/* Floating Support Block CSS */
+
+.floating-support {
+    position: fixed;
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Posizioni del floating support */
+.floating-support--bottom-right {
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.floating-support--bottom-left {
+    bottom: 2rem;
+    left: 2rem;
+}
+
+.floating-support--top-right {
+    top: 2rem;
+    right: 2rem;
+}
+
+.floating-support--top-left {
+    top: 2rem;
+    left: 2rem;
+}
+
+/* Pulsante floating */
+.floating-support__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 124, 186, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 60px;
+    justify-content: center;
+}
+
+.floating-support__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 124, 186, 0.4);
+    background: linear-gradient(135deg, #005a87 0%, #004066 100%);
+}
+
+.floating-support__button:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.floating-support__button:active {
+    transform: translateY(0);
+}
+
+/* Icona del pulsante */
+.floating-support__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.floating-support__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Testo del pulsante */
+.floating-support__text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+/* Icona di chiusura (nascosta inizialmente) */
+.floating-support__close {
+    display: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Quando il panel è aperto */
+.floating-support__button[aria-expanded="true"] .floating-support__icon,
+.floating-support__button[aria-expanded="true"] .floating-support__text {
+    display: none;
+}
+
+.floating-support__button[aria-expanded="true"] .floating-support__close {
+    display: block;
+}
+
+.floating-support__button[aria-expanded="true"] {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+}
+
+/* Panel dei contatti */
+.floating-support__panel {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    min-width: 280px;
+    max-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: bottom right;
+}
+
+/* Posizionamento del panel in base alla posizione del pulsante */
+.floating-support--bottom-right .floating-support__panel,
+.floating-support--top-right .floating-support__panel {
+    right: 0;
+    bottom: calc(100% + 1rem);
+}
+
+.floating-support--bottom-left .floating-support__panel,
+.floating-support--top-left .floating-support__panel {
+    left: 0;
+    bottom: calc(100% + 1rem);
+}
+
+.floating-support--top-right .floating-support__panel,
+.floating-support--top-left .floating-support__panel {
+    top: calc(100% + 1rem);
+    bottom: auto;
+}
+
+/* Panel visibile */
+.floating-support__panel[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Contenuto del panel */
+.floating-support__panel-content {
+    padding: 1.5rem;
+}
+
+.floating-support__title {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    line-height: 1.3;
+}
+
+/* Lista contatti */
+.floating-support__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Singolo contatto */
+.floating-support__contact {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.floating-support__contact:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+.floating-support__contact:focus {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+/* Icona del contatto */
+.floating-support__contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.floating-support__contact--phone .floating-support__contact-icon {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.floating-support__contact--email .floating-support__contact-icon {
+    background-color: rgba(0, 124, 186, 0.1);
+    color: #007cba;
+}
+
+/* Info del contatto */
+.floating-support__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.floating-support__contact-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.floating-support__contact-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1e1e1e;
+    word-break: break-all;
+}
+
+/* Animazioni per mobile */
+@media (max-width: 768px) {
+    .floating-support--bottom-right,
+    .floating-support--bottom-left {
+        bottom: 1rem;
+    }
+    
+    .floating-support--bottom-right {
+        right: 1rem;
+    }
+    
+    .floating-support--bottom-left {
+        left: 1rem;
+    }
+    
+    .floating-support--top-right,
+    .floating-support--top-left {
+        top: 1rem;
+    }
+    
+    .floating-support--top-right {
+        right: 1rem;
+    }
+    
+    .floating-support--top-left {
+        left: 1rem;
+    }
+    
+    .floating-support__panel {
+        min-width: 260px;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .floating-support__panel-content {
+        padding: 1.25rem;
+    }
+    
+    .floating-support__button {
+        padding: 0.65rem 1rem;
+    }
+    
+    .floating-support__text {
+        font-size: 0.85rem;
+    }
+}
+
+/* Piccoli schermi */
+@media (max-width: 480px) {
+    .floating-support__panel {
+        position: fixed;
+        left: 1rem;
+        right: 1rem;
+        bottom: 5rem;
+        top: auto;
+        transform-origin: bottom center;
+        min-width: auto;
+        max-width: none;
+    }
+    
+    .floating-support--top-right .floating-support__panel,
+    .floating-support--top-left .floating-support__panel {
+        top: 5rem;
+        bottom: auto;
+        transform-origin: top center;
+    }
+}
+
+/* Hover effects per desktop */
+@media (hover: hover) {
+    .floating-support__button:hover .floating-support__icon {
+        transform: scale(1.1);
+    }
+}
+
+/* Accessibilità */
+@media (prefers-reduced-motion: reduce) {
+    .floating-support__button,
+    .floating-support__panel,
+    .floating-support__icon,
+    .floating-support__contact {
+        transition: none;
+    }
+}
+
+/* Focus trap per il panel */
+.floating-support__panel[aria-hidden="false"] {
+    /* Assicura che il panel sia sopra altri elementi */
+    z-index: 10000;
+}
+
+/* Varianti di colore */
+.floating-support.is-style-green .floating-support__button {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.floating-support.is-style-green .floating-support__button:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+.floating-support.is-style-red .floating-support__button {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.floating-support.is-style-red .floating-support__button:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
