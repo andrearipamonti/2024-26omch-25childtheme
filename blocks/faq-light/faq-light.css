@@ -1,13 +1,39 @@
-/* FAQ Light Block CSS - Pure CSS Accordion (NO JavaScript) */
+/**
+ * FAQ LIGHT - ACCORDION PURO CSS (SENZA JAVASCRIPT)
+ * ================================================
+ * 
+ * SCOPO EDUCATIVO: Questo CSS implementa un accordion completamente funzionale
+ * usando SOLO CSS, senza bisogno di JavaScript. La tecnica si basa su:
+ * 1. INPUT CHECKBOX/RADIO nascosti per lo stato
+ * 2. LABEL come pulsanti cliccabili
+ * 3. SELETTORE :checked per rilevare lo stato attivo
+ * 4. SELETTORE ~ (sibling) per collegare stato e contenuto
+ * 5. MAX-HEIGHT per animazioni di apertura/chiusura
+ * 
+ * CONCETTI CSS AVANZATI IMPARATI:
+ * - :checked pseudo-class per stato toggle
+ * - Selettori di adiacenza (+ e ~)
+ * - max-height animations per content reveal
+ * - Transform per rotazioni icone
+ * - Pseudo-elementi ::before per contenuto dinamico
+ * - Focus-within per accessibilità avanzata
+ * - CSS-only interaction patterns
+ */
 
+/* ========================================
+   CONTAINER PRINCIPALE FAQ
+   ======================================== */
 .faq-light {
     margin: 2rem 0;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow: hidden; /* Nasconde contenuto che fuoriesce durante animazioni */
 }
 
+/* ========================================
+   TITOLO PRINCIPALE DEL BLOCCO FAQ
+   ======================================== */
 .faq-light__title {
     margin: 0 0 1.5rem 0;
     padding: 1.5rem 1.5rem 0 1.5rem;
@@ -17,128 +43,252 @@
     line-height: 1.3;
 }
 
+/* ========================================
+   CONTAINER DEGLI ITEM FAQ
+   ======================================== */
 .faq-light__container {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0; /* Separatore visivo dal titolo */
 }
 
-/* Singolo item FAQ */
+/* ========================================
+   SINGOLO ITEM FAQ
+   ======================================== */
 .faq-light__item {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0; /* Separatore tra item */
 }
 
 .faq-light__item:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Rimuove bordo dall'ultimo item */
 }
 
-/* Nascondi i checkbox/radio button */
+/* ========================================
+   ELEMENTO CHIAVE: CHECKBOX/RADIO NASCOSTO
+   ======================================== */
+/* TECNICA CSS-ONLY: Usa un input invisibile per mantenere lo stato */
 .faq-light__toggle {
-    display: none;
+    display: none; /* NASCOSTO ma funzionale per :checked */
+    /* 
+    SPIEGAZIONE PER STUDENTI:
+    - L'input è nascosto ma rimane nel DOM
+    - Quando l'utente clicca sulla <label>, l'input cambia stato
+    - CSS può rilevare questo cambio con :checked
+    - Così otteniamo interattività senza JavaScript!
+    */
 }
 
-/* Label che funge da pulsante */
+/* ========================================
+   PULSANTE DOMANDA (LABEL INTERATTIVA)
+   ======================================== */
+/* TECNICA CHIAVE: <label> collegata all'input nascosto */
 .faq-light__question {
-    width: calc(100% - 3rem);
+    width: calc(100% - 3rem); /* Spazio per possibili decorazioni */
     background: none;
     border: none;
     padding: 1.5rem;
-    cursor: pointer;
+    cursor: pointer; /* Indica che è cliccabile */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Testo a sinistra, icona a destra */
     transition: background-color 0.2s ease;
     position: relative;
+    /*
+    SPIEGAZIONE PER STUDENTI:
+    - Questo è un <label> associato all'input nascosto
+    - Quando clicchi sulla label, l'input associato cambia stato
+    - È il trucco fondamentale per l'accordion CSS-only!
+    */
 }
 
+/* ========================================
+   HOVER EFFECT PER FEEDBACK VISIVO
+   ======================================== */
 .faq-light__question:hover {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Feedback visivo al passaggio del mouse */
 }
 
+/* ========================================
+   TESTO DELLA DOMANDA
+   ======================================== */
 .faq-light__question-text {
     font-size: 1.125rem;
     font-weight: 500;
     color: #1e1e1e;
     line-height: 1.4;
-    padding-right: 1rem;
+    padding-right: 1rem; /* Spazio dall'icona */
 }
 
-/* Icona + / - */
+/* ========================================
+   ICONA EXPAND/COLLAPSE (+ / -)
+   ======================================== */
+/* TECNICA AVANZATA: Contenuto dinamico con ::before */
 .faq-light__icon {
-    font-size: 0; /* Nasconde il contenuto testuale */
+    font-size: 0; /* Nasconde eventuale contenuto HTML testuale */
     font-weight: bold;
     color: #007cba;
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
+    transition: transform 0.3s ease; /* Animazione di rotazione */
+    flex-shrink: 0; /* Non si riduce mai */
     width: 2rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background-color: rgba(0, 124, 186, 0.1);
+    border-radius: 50%; /* Cerchio perfetto */
+    background-color: rgba(0, 124, 186, 0.1); /* Sfondo semi-trasparente */
 }
 
+/* ========================================
+   PSEUDO-ELEMENTO PER SIMBOLO "+"
+   ======================================== */
 .faq-light__icon::before {
-    content: "+";
+    content: "+"; /* CONTENUTO GENERATO DA CSS */
     font-size: 1.5rem;
+    /*
+    SPIEGAZIONE PER STUDENTI:
+    - ::before crea contenuto che non esiste nell'HTML
+    - Questo simbolo "+" viene generato puramente dal CSS
+    - Cambierà dinamicamente in base allo stato :checked
+    */
 }
 
-/* Quando il toggle è attivo, cambia l'icona */
+/* ========================================
+   MAGIA CSS: STATO ATTIVO (:checked)
+   ======================================== */
+/* SELETTORE AVANZATO: :checked + (adiacente) */
 .faq-light__toggle:checked + .faq-light__question .faq-light__icon {
-    transform: rotate(180deg);
-    background-color: #007cba;
+    transform: rotate(180deg); /* Rotazione per feedback visivo */
+    background-color: #007cba; /* Colore attivo */
     color: #ffffff;
+    /*
+    SPIEGAZIONE SELETTORE PER STUDENTI:
+    - .faq-light__toggle:checked = quando il checkbox è spuntato
+    - + = selettore di elemento IMMEDIATAMENTE adiacente
+    - .faq-light__question = la label che segue il checkbox
+    - .faq-light__icon = l'icona dentro la label
+    
+    SEQUENZA DOM: <input><label><span class="icon"></span></label>
+    Il CSS può "salire" dalla label all'icona interna!
+    */
 }
 
+/* ========================================
+   CAMBIO DINAMICO DEL CONTENUTO
+   ======================================== */
 .faq-light__toggle:checked + .faq-light__question .faq-light__icon::before {
-    content: "−";
+    content: "−"; /* DA "+" DIVENTA "−" quando attivo! */
+    /*
+    TECNICA AVANZATA PER STUDENTI:
+    - Stesso selettore ma targetta il ::before
+    - Cambia il CONTENUTO generato dal CSS
+    - Nessun JavaScript necessario per questo cambio!
+    */
 }
 
-/* Contenitore risposta */
+/* ========================================
+   CONTENITORE RISPOSTA (COLLAPSIBLE)
+   ======================================== */
+/* TECNICA ANIMAZIONE: max-height per slide effect */
 .faq-light__answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    max-height: 0; /* NASCOSTO: altezza zero */
+    overflow: hidden; /* Nasconde contenuto che eccede */
+    transition: max-height 0.4s ease; /* Animazione fluida */
+    /*
+    SPIEGAZIONE TECNICA PER STUDENTI:
+    - max-height: 0 = contenuto nascosto (ma presente nel DOM)
+    - overflow: hidden = impedisce al contenuto di "fuoriuscire"
+    - transition = anima il cambio di max-height per effetto slide
+    - Più performante di height auto (che non si può animare)
+    */
 }
 
-/* Quando il toggle è attivo, mostra la risposta */
+/* ========================================
+   STATO APERTO: RIVELA IL CONTENUTO
+   ======================================== */
+/* SELETTORE SIBLING: :checked ~ (tutti i fratelli successivi) */
 .faq-light__toggle:checked ~ .faq-light__answer {
-    max-height: 1000px; /* Valore alto per permettere espansione */
+    max-height: 1000px; /* VALORE ALTO per permettere espansione completa */
+    /*
+    SPIEGAZIONE SELETTORE AVANZATO PER STUDENTI:
+    - ~ = selettore "general sibling" (tutti i fratelli successivi)
+    - Diverso da + che seleziona solo il fratello immediatamente successivo
+    - Il DOM è: <input><label></label><div class="answer"></div>
+    - Quando input è :checked, l'answer (fratello successivo) si apre
+    
+    NOTA SU MAX-HEIGHT:
+    - Non possiamo animare da height: 0 a height: auto
+    - Usiamo un valore fisso abbastanza alto (1000px)
+    - Il contenuto non supererà mai questo limite
+    - L'animazione sarà fluida grazie al transition
+    */
 }
 
+/* ========================================
+   CONTENUTO DELLA RISPOSTA
+   ======================================== */
 .faq-light__answer-content {
-    padding: 1.5rem;
-    color: #4a4a4a;
-    line-height: 1.6;
+    padding: 1.5rem; /* Spazio interno per leggibilità */
+    color: #4a4a4a; /* Colore più chiaro del testo domanda */
+    line-height: 1.6; /* Spaziatura per leggibilità ottimale */
 }
 
+/* ========================================
+   FORMATTAZIONE ELEMENTI DI TESTO
+   ======================================== */
 .faq-light__answer-content p {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1rem 0; /* Spaziatura tra paragrafi */
 }
 
 .faq-light__answer-content p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0; /* Rimuove margin dall'ultimo paragrafo */
 }
 
+/* ========================================
+   SUPPORTO PER LISTE
+   ======================================== */
 .faq-light__answer-content ul,
 .faq-light__answer-content ol {
     margin: 1rem 0;
-    padding-left: 1.5rem;
+    padding-left: 1.5rem; /* Indentazione liste */
 }
 
 .faq-light__answer-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem; /* Spaziatura tra elementi lista */
 }
 
-/* Stile quando la domanda è attiva */
+/* ========================================
+   FEEDBACK VISIVO DOMANDA ATTIVA
+   ======================================== */
+/* Cambia aspetto della domanda quando l'accordion è aperto */
 .faq-light__toggle:checked + .faq-light__question {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Evidenzia domanda attiva */
+    /*
+    SPIEGAZIONE PER STUDENTI:
+    - Quando l'accordion è aperto (:checked)
+    - La domanda rimane evidenziata visivamente
+    - Feedback importante per indicare lo stato corrente
+    */
 }
 
-/* Focus states per accessibilità */
+/* ========================================
+   ACCESSIBILITÀ: FOCUS MANAGEMENT
+   ======================================== */
+/* PSEUDO-CLASS AVANZATA: :focus-within */
 .faq-light__question:focus-within {
-    outline: 2px solid #007cba;
-    outline-offset: -2px;
-    background-color: #f0f6ff;
+    outline: 2px solid #007cba; /* Bordo focus visibile */
+    outline-offset: -2px; /* Bordo interno per non spostare layout */
+    background-color: #f0f6ff; /* Sfondo focus distintivo */
+    /*
+    SPIEGAZIONE ACCESSIBILITÀ PER STUDENTI:
+    - :focus-within si attiva quando un elemento figlio ha il focus
+    - Importante per navigazione da tastiera
+    - L'utente può usare TAB per navigare tra accordion
+    - SPACE o ENTER per attivare (funziona automaticamente con label+input)
+    - Screen reader possono comprendere lo stato :checked
+    
+    ALTERNATIVA JAVASCRIPT-FREE:
+    - Gli input nascosti mantengono il focus naturalmente
+    - Le label sono automaticamente accessibili
+    - Il browser gestisce tutto senza codice aggiuntivo!
+    */
 }
 
 /* Varianti di stile */
