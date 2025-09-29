@@ -1,0 +1,29 @@
+{
+    "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+    "apiVersion": 2,
+    "name": "acf/CAMBIA_QUESTO",
+    "title": "CAMBIA_QUESTO",
+    "description": "CAMBIA_QUESTO",
+    "style": [ 
+        "file:./CAMBIA_QUESTO.css"
+    ],
+    "script": [
+        "CAMBIA_QUESTO"
+    ],
+    "category": "CAMBIA_QUESTO",
+    "icon": "",
+    "keywords": [
+        "CAMBIA_QUESTO", 
+        "CAMBIA_QUESTO",
+        "CAMBIA_QUESTO",
+        "CAMBIA_QUESTO"
+    ],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "CAMBIA_QUESTO.php"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false
+    }
+}

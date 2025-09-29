@@ -1,0 +1,1 @@
+// Qui imposta la chiusa del callout con JS/JQuery

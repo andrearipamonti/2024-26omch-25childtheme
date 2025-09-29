@@ -1,0 +1,1 @@
+// imposta qui la logica del blocco hero per far scrollare alla sezione indicata, sappi che puoi anche farla solo con CSS
