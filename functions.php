@@ -71,35 +71,35 @@ function main_scripts() {
     wp_register_script( 
         'callout', 
         get_stylesheet_directory_uri() . '/blocks/callout/callout.js',
-        array('main'), 
+        array('jquery', 'main'), 
         '1.0', 
         true
     );
     wp_register_script( 
         'faq', 
         get_stylesheet_directory_uri() . '/blocks/faq/faq.js',
-        array('main'), 
+        array('jquery', 'main'), 
         '1.0', 
         true
     );
     wp_register_script( 
         'floating-support', 
         get_stylesheet_directory_uri() . '/blocks/floating-support/floating-support.js',
-        array('main'), 
+        array('jquery', 'main'), 
         '1.0', 
         true
     );
     wp_register_script( 
         'hero', 
         get_stylesheet_directory_uri() . '/blocks/hero/hero.js',
-        array('jquery'), 
+        array('jquery', 'main'), 
         '1.0', 
         true
     );
     wp_register_script( 
         'modal', 
         get_stylesheet_directory_uri() . '/blocks/modal/modal.js',
-        array('main'), 
+        array('jquery', 'main'), 
         '1.0', 
         true
     );

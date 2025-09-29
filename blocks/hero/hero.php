@@ -1,43 +1,102 @@
 <?php
 /**
- * Hero Block
- * Sezione hero con titolo, testo, CTA e smooth scroll verso anchor target
+ * TEMPLATE PHP HERO - SEZIONE BANNER PRINCIPALE
+ * ============================================
+ * 
+ * SCOPO EDUCATIVO: Questo template genera una sezione hero (banner principale)
+ * con immagine di sfondo, contenuto sovrapposto, CTA configurabili e smooth scroll.
+ * Implementa pattern UI moderni con overlay, responsive design e accessibility.
+ * 
+ * CONCETTI CHIAVE IMPARATI:
+ * - Hero section pattern per landing pages
+ * - Gestione immagini di sfondo con overlay
+ * - CTA (Call To Action) multipli con comportamenti diversi
+ * - Campi ACF complessi (image, select, range)
+ * - Logica condizionale complessa per UI variants
+ * - Classi CSS dinamiche per responsive design
+ * - Data attributes per configurazione JavaScript
+ * - Semantic HTML5 (section, h1, etc.)
+ * - Inline CSS per valori dinamici
  */
 
-// Recupera i campi ACF
-$hero_title = get_field('hero_title');
-$hero_subtitle = get_field('hero_subtitle');
-$hero_text = get_field('hero_text');
-$hero_image = get_field('hero_image');
-$cta_text = get_field('cta_text');
-$cta_target = get_field('cta_target'); // Anchor target (es: #sezione)
-$cta_external_link = get_field('cta_external_link'); // Link esterno alternativo
-$hero_height = get_field('hero_height') ?: 'medium'; // small, medium, large, full
-$text_alignment = get_field('text_alignment') ?: 'left'; // left, center, right
-$overlay_opacity = get_field('overlay_opacity') ?: 50; // 0-100
+// ========================================
+// DOCUMENTAZIONE COMPONENTE
+// ========================================
+// Hero Section: sezione principale di una pagina, solitamente above-the-fold
+// Contiene: titolo principale, sottotitolo, testo descrittivo, CTA, immagine sfondo
 
-// Ancora HTML
+// ========================================
+// RECUPERO CAMPI ACF COMPLESSI
+// ========================================
+// Contenuto principale
+$hero_title = get_field('hero_title');           // Titolo principale (H1)
+$hero_subtitle = get_field('hero_subtitle');     // Sottotitolo introduttivo
+$hero_text = get_field('hero_text');             // Testo descrittivo (WYSIWYG)
+$hero_image = get_field('hero_image');           // Immagine di sfondo (ACF Image field)
+
+// Call To Action (CTA)
+$cta_text = get_field('cta_text');               // Testo del pulsante CTA
+$cta_target = get_field('cta_target');           // Anchor target per smooth scroll (es: #about)
+$cta_external_link = get_field('cta_external_link'); // Link esterno alternativo
+
+// ========================================
+// CAMPI DI CONFIGURAZIONE CON DEFAULTS
+// ========================================
+// Campo select per altezza hero
+$hero_height = get_field('hero_height') ?: 'medium'; 
+// Opzioni: small, medium, large, full (100vh)
+
+// Campo select per allineamento testo
+$text_alignment = get_field('text_alignment') ?: 'left'; 
+// Opzioni: left, center, right
+
+// Campo range per opacità overlay (0-100)
+$overlay_opacity = get_field('overlay_opacity') ?: 50; 
+// Permette di controllare la leggibilità del testo sull'immagine
+
+// ========================================
+// GESTIONE STANDARD GUTENBERG
+// ========================================
 $anchor = '';
 if ( ! empty( $block['anchor'] ) ) {
     $anchor = esc_attr( $block['anchor'] );
 }
 
-$class_name = 'hero';
+// ========================================
+// COSTRUZIONE CLASSI CSS DINAMICHE COMPLESSE
+// ========================================
+$class_name = 'hero'; // Classe base BEM
+
+// Classi personalizzate da editor
 if ( ! empty( $block['className'] ) ) {
     $class_name .= ' ' . $block['className'];
 }
 
-// Aggiungi classi per configurazione
+// ========================================
+// MODIFICATORI BEM PER CONFIGURAZIONE
+// ========================================
+// Modificatore per altezza (controlla min-height via CSS)
 $class_name .= ' hero--' . $hero_height;
+
+// Modificatore per allineamento testo
 $class_name .= ' hero--text-' . $text_alignment;
 
-// Se ha immagine di sfondo
+// ========================================
+// CLASSE CONDIZIONALE PER IMMAGINE
+// ========================================
+// Se ha immagine di sfondo, aggiunge modificatore per styling specifico
 if ( $hero_image ) {
     $class_name .= ' hero--has-image';
 }
 
-// ID unico per il componente
+// ========================================
+// ID UNIVOCO PER COMPONENTE
+// ========================================
 $hero_id = uniqid('hero-');
+
+// ========================================
+// INIZIO OUTPUT HTML
+// ========================================
 ?>
 
 <section id="<?php echo $anchor ?>" class="<?php echo $class_name ?>" data-hero-id="<?php echo $hero_id; ?>">
@@ -90,12 +149,77 @@ $hero_id = uniqid('hero-');
         </div>
     </div>
     
-    <!-- Indicatore scroll (opzionale) -->
+    <!-- ========================================
+         INDICATORE SCROLL ANIMATO (OPZIONALE)
+         ======================================== -->
+    <!-- Mostrato solo se ha target interno (non link esterno) -->
     <?php if ( $cta_target && !$cta_external_link ) : ?>
         <div class="hero__scroll-indicator">
-            <button type="button" class="hero__scroll-button" data-scroll-target="<?php echo esc_attr( $cta_target ); ?>" aria-label="Scorri alla sezione successiva">
+            <!-- 
+            BUTTON ACCESSIBILE PER SCROLL:
+            - aria-label per descrizione completa
+            - data-scroll-target per JavaScript
+            - type="button" previene submit form
+            -->
+            <button type="button" 
+                    class="hero__scroll-button" 
+                    data-scroll-target="<?php echo esc_attr( $cta_target ); ?>" 
+                    aria-label="Scorri alla sezione successiva">
+                <!-- Freccia animata CSS pura (no SVG per performance) -->
                 <span class="hero__scroll-arrow"></span>
             </button>
         </div>
     <?php endif; ?>
+    
 </section>
+
+<?php
+// ========================================
+// NOTE EDUCATIVE FINALI
+// ========================================
+/*
+PATTERN HERO SECTION IMPLEMENTATO:
+- Above-the-fold content per massimo impatto
+- Immagine di sfondo full-width con overlay controllabile
+- Gerarchia heading corretta (H1 per SEO)
+- CTA prominente con azioni alternative
+- Responsive design con container flessibili
+
+CAMPI ACF UTILIZZATI:
+- hero_title (text): Titolo principale
+- hero_subtitle (text): Sottotitolo
+- hero_text (wysiwyg): Contenuto rich text
+- hero_image (image): Immagine di sfondo
+- cta_text (text): Testo pulsante
+- cta_target (text): Anchor per smooth scroll
+- cta_external_link (url): Link esterno alternativo
+- hero_height (select): Altezza sezione
+- text_alignment (select): Allineamento testo
+- overlay_opacity (range): Opacità overlay
+
+LOGICA CONDIZIONALE COMPLESSA:
+- Mostra elementi solo se hanno contenuto
+- CTA alterna tra link esterno e scroll interno
+- Overlay solo se presente immagine
+- Indicatore scroll solo per target interni
+
+SICUREZZA IMPLEMENTATA:
+- esc_url() per URL sanitization
+- esc_attr() per attributi HTML
+- esc_html() per contenuto textuale
+- wp_kses_post() per rich text sicuro
+
+ACCESSIBILITÀ FEATURES:
+- Semantic HTML5 structure
+- aria-label per elementi interattivi
+- aria-hidden per icone decorative
+- Alt text dinamico per immagini
+- Focus indicators via CSS
+
+PERFORMANCE OPTIMIZATIONS:
+- SVG inline per icone (no HTTP requests)
+- Conditional loading di elementi
+- CSS classes per styling efficiente
+- Minimal inline CSS solo per valori dinamici
+*/
+?>
