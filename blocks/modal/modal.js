@@ -92,6 +92,23 @@
         });
         
         // ========================================
+        // GESTIONE TRIGGER INTERNI DEL BLOCCO
+        // ========================================
+        // Gestisce i pulsanti trigger all'interno dello stesso blocco modal
+        $(document).on('click', '.modal-block__trigger', function(e) {
+            e.preventDefault(); // Previene comportamento default del button/link
+            
+            // Legge quale modal aprire dall'attributo data-modal-target
+            const modalId = $(this).data('modal-target');
+            const $modal = $('#' + modalId); // Trova modal per ID
+            
+            // Se la modal esiste, aprila
+            if ($modal.length) {
+                openModal($modal, modalId);
+            }
+        });
+        
+        // ========================================
         // GESTIONE TRIGGER ESTERNI
         // ========================================
         // Configura pulsanti esterni che possono aprire modal specifiche
@@ -110,50 +127,7 @@
         });
     }
 
-    /**
-     * Inizializza una singola modal
-     * @param {jQuery} $block - Il blocco modal
-     */
-    function initSingleModal($block) {
-        const modalId = $block.data('modal-id');
-        const autoOpen = $block.data('auto-open');
-        const autoDelay = parseInt($block.data('auto-delay')) || 3;
-        const preventReopen = $block.data('prevent-reopen');
-        
-        const $modal = $block.find('.modal-block__modal');
-        const $trigger = $block.find('.modal-block__trigger');
-        
-        // Gestione click sul trigger
-        $trigger.on('click', function(e) {
-            e.preventDefault();
-            openModal($modal, modalId);
-        });
-        
-        // Gestione chiusura modal
-        initModalCloseHandlers($modal, modalId);
-        
-        // Auto-open se abilitato
-        if (autoOpen) {
-            handleAutoOpen($modal, modalId, autoDelay, preventReopen);
-        }
-    }
 
-    /**
-     * Gestisce l'auto-apertura della modal
-     */
-    function handleAutoOpen($modal, modalId, delay, preventReopen) {
-        // Controlla se la modal è stata già chiusa definitivamente
-        if (preventReopen && getCookie(`modal-${modalId}-closed`)) {
-            return;
-        }
-        
-        setTimeout(function() {
-            if (preventReopen && getCookie(`modal-${modalId}-closed`)) {
-                return;
-            }
-            openModal($modal, modalId, true);
-        }, delay * 1000);
-    }
 
     /**
      * FUNZIONE DI APERTURA MODAL
