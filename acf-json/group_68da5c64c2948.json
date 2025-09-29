@@ -1,11 +1,11 @@
 {
-    "key": "group_68da58b8399e0",
-    "title": "Hero",
+    "key": "group_68da5c64c2948",
+    "title": "Modal",
     "fields": [
         {
-            "key": "field_68da58b816374",
+            "key": "field_68da5c64c38e8",
             "label": "Titolo",
-            "name": "hero_title",
+            "name": "modal_title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -24,30 +24,9 @@
             "append": ""
         },
         {
-            "key": "field_68da58c916375",
-            "label": "Sottotitolo",
-            "name": "hero_subtitle",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_68da58d316376",
-            "label": "Testo",
-            "name": "hero_text",
+            "key": "field_68da5c64c3cd0",
+            "label": "Contenuto",
+            "name": "modal_content",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",
@@ -66,35 +45,9 @@
             "new_lines": ""
         },
         {
-            "key": "field_68da58dd16377",
-            "label": "Immagine",
-            "name": "hero_image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_68da58e716378",
+            "key": "field_68da5c64c4888",
             "label": "Testo CTA",
-            "name": "cta_text",
+            "name": "button_text",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -113,11 +66,11 @@
             "append": ""
         },
         {
-            "key": "field_68da58ee16379",
-            "label": "Target CTA",
-            "name": "cta_target",
+            "key": "field_68da5ccb97ce0",
+            "label": "Mostra bottone",
+            "name": "show_button",
             "aria-label": "",
-            "type": "text",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -126,35 +79,47 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
+            "message": "",
+            "default_value": 1,
             "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_68da5c64c5440",
+            "label": "Stile del bottone",
+            "name": "button_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "primary",
+                "secondary": "secondary",
+                "outline": "outline"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "create_options": 0,
+            "save_options": 0
         },
         {
-            "key": "field_68da59071637a",
-            "label": "Link esterno CTA",
-            "name": "cta_external_link",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_68da591e1637b",
-            "label": "Altezza",
-            "name": "hero_height",
+            "key": "field_68da5d1355e93",
+            "label": "Dimensione della modal",
+            "name": "modal_size",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -168,8 +133,7 @@
             "choices": {
                 "small": "small",
                 "medium": "medium",
-                "large": "large",
-                "full": "full"
+                "large": "large"
             },
             "default_value": false,
             "return_format": "value",
@@ -183,11 +147,11 @@
             "save_options": 0
         },
         {
-            "key": "field_68da59c8fd447",
-            "label": "Allineamento del test",
-            "name": "text_alignment",
+            "key": "field_68da5ce855e91",
+            "label": "Apri da sola",
+            "name": "auto_open",
             "aria-label": "",
-            "type": "select",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -196,42 +160,97 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "left": "left",
-                "center": "center",
-                "right": "right"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
+            "message": "",
+            "default_value": 0,
             "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
         },
         {
-            "key": "field_68da593d1637c",
-            "label": "Opacità Overlay",
-            "name": "overlay_opacity",
+            "key": "field_68da5d0055e92",
+            "label": "Ritarda apertura automatica",
+            "name": "auto_open_delay",
             "aria-label": "",
-            "type": "number",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68da5ce855e91",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_68da5d2a55e94",
+            "label": "Previeni ri-apertura automatica",
+            "name": "prevent_reopen",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68da5ce855e91",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_68da5d700c56f",
+            "label": "ID personalizzato per il cookie",
+            "name": "modal_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68da5d2a55e94",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "min": 0,
-            "max": 100,
+            "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
-            "step": "",
             "prepend": "",
             "append": ""
         }
@@ -241,7 +260,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/hero"
+                "value": "acf\/modal"
             }
         ]
     ],
@@ -254,5 +273,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1759140927
+    "modified": 1759141249
 }

@@ -92,6 +92,13 @@ function main_scripts() {
     wp_register_script( 
         'hero', 
         get_stylesheet_directory_uri() . '/blocks/hero/hero.js',
+        array('jquery'), 
+        '1.0', 
+        true
+    );
+    wp_register_script( 
+        'modal', 
+        get_stylesheet_directory_uri() . '/blocks/modal/modal.js',
         array('main'), 
         '1.0', 
         true
@@ -108,6 +115,7 @@ if( class_exists('acf') ) {
         register_block_type( __DIR__ . '/blocks/faq-light' );
         register_block_type( __DIR__ . '/blocks/floating-support' );
         register_block_type( __DIR__ . '/blocks/hero' );
+        register_block_type( __DIR__ . '/blocks/modal' );
         register_block_type( __DIR__ . '/blocks/personal-card' );
         register_block_type( __DIR__ . '/blocks/progress-bar' );
         register_block_type( __DIR__ . '/blocks/testimonial' );
