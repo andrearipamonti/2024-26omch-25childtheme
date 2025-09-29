@@ -7,6 +7,6 @@
  * in front-office del front-end, al click su una X, deve chiuderi la modal
  * 
  * plus:
- * aggingi la possibilità di NON inserire il button, ma di far mostrare la modal dopo 3 secondi
+ * aggiungi la possibilità di NON inserire il button, ma di far mostrare la modal dopo 3 secondi
  * dal caricamento della pagina, permetti di chiudere la modal e di non farla più riapparire ( serve JS e la gestione di un cookie tecnico)
  * */
