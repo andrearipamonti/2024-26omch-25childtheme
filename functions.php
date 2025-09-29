@@ -91,6 +91,7 @@ if( class_exists('acf') ) {
         register_block_type( __DIR__ . '/blocks/carousel' );
         register_block_type( __DIR__ . '/blocks/carousel-captions' );
         register_block_type( __DIR__ . '/blocks/faq' );
+        register_block_type( __DIR__ . '/blocks/faq-light' );
         register_block_type( __DIR__ . '/blocks/personal-card' );
         register_block_type( __DIR__ . '/blocks/progress-bar' );
         register_block_type( __DIR__ . '/blocks/testimonial' );

@@ -120,6 +120,13 @@
                 "operator": "==",
                 "value": "acf\/faq"
             }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/faq-light"
+            }
         ]
     ],
     "menu_order": 0,
@@ -131,5 +138,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1759134139
+    "modified": 1759134667
 }

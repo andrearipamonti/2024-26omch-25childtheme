@@ -1,0 +1,242 @@
+/* FAQ Light Block CSS - Pure CSS Accordion (NO JavaScript) */
+
+.faq-light {
+    margin: 2rem 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.faq-light__title {
+    margin: 0 0 1.5rem 0;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    line-height: 1.3;
+}
+
+.faq-light__container {
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Singolo item FAQ */
+.faq-light__item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-light__item:last-child {
+    border-bottom: none;
+}
+
+/* Nascondi i checkbox/radio button */
+.faq-light__toggle {
+    display: none;
+}
+
+/* Label che funge da pulsante */
+.faq-light__question {
+    width: calc(100% - 3rem);
+    background: none;
+    border: none;
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.faq-light__question:hover {
+    background-color: #f8f9fa;
+}
+
+.faq-light__question-text {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #1e1e1e;
+    line-height: 1.4;
+    padding-right: 1rem;
+}
+
+/* Icona + / - */
+.faq-light__icon {
+    font-size: 0; /* Nasconde il contenuto testuale */
+    font-weight: bold;
+    color: #007cba;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0, 124, 186, 0.1);
+}
+
+.faq-light__icon::before {
+    content: "+";
+    font-size: 1.5rem;
+}
+
+/* Quando il toggle è attivo, cambia l'icona */
+.faq-light__toggle:checked + .faq-light__question .faq-light__icon {
+    transform: rotate(180deg);
+    background-color: #007cba;
+    color: #ffffff;
+}
+
+.faq-light__toggle:checked + .faq-light__question .faq-light__icon::before {
+    content: "−";
+}
+
+/* Contenitore risposta */
+.faq-light__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+/* Quando il toggle è attivo, mostra la risposta */
+.faq-light__toggle:checked ~ .faq-light__answer {
+    max-height: 1000px; /* Valore alto per permettere espansione */
+}
+
+.faq-light__answer-content {
+    padding: 1.5rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+.faq-light__answer-content p {
+    margin: 0 0 1rem 0;
+}
+
+.faq-light__answer-content p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-light__answer-content ul,
+.faq-light__answer-content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.faq-light__answer-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Stile quando la domanda è attiva */
+.faq-light__toggle:checked + .faq-light__question {
+    background-color: #f8f9fa;
+}
+
+/* Focus states per accessibilità */
+.faq-light__question:focus-within {
+    outline: 2px solid #007cba;
+    outline-offset: -2px;
+    background-color: #f0f6ff;
+}
+
+/* Varianti di stile */
+.faq-light.is-style-minimal {
+    background: none;
+    box-shadow: none;
+}
+
+.faq-light.is-style-minimal .faq-light__container {
+    border-top: none;
+}
+
+.faq-light.is-style-minimal .faq-light__item {
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.faq-light.is-style-minimal .faq-light__item:last-child {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Stile colorato */
+.faq-light.is-style-colored .faq-light__question {
+    background-color: #007cba;
+    color: #ffffff;
+}
+
+.faq-light.is-style-colored .faq-light__question-text {
+    color: #ffffff;
+}
+
+.faq-light.is-style-colored .faq-light__icon {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.faq-light.is-style-colored .faq-light__question:hover {
+    background-color: #005a87;
+}
+
+.faq-light.is-style-colored .faq-light__toggle:checked + .faq-light__question {
+    background-color: #005a87;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .faq-light {
+        margin: 1.5rem 0;
+    }
+    
+    .faq-light__title {
+        font-size: 1.5rem;
+        padding: 1rem 1rem 0 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .faq-light__question {
+        padding: 1rem;
+    }
+    
+    .faq-light__question-text {
+        font-size: 1rem;
+        padding-right: 0.75rem;
+    }
+    
+    .faq-light__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    
+    .faq-light__icon::before {
+        font-size: 1.25rem;
+    }
+    
+    .faq-light__answer-content {
+        padding: 0 1rem 1rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-light__question {
+        padding: 0.75rem;
+    }
+    
+    .faq-light__answer-content {
+        padding: 0 0.75rem 0.75rem 0.75rem;
+    }
+}
+
+/* Accessibilità - riduci animazioni se richiesto */
+@media (prefers-reduced-motion: reduce) {
+    .faq-light__answer,
+    .faq-light__icon,
+    .faq-light__question {
+        transition: none;
+    }
+}
