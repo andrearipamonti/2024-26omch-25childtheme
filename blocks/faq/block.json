@@ -1,26 +1,24 @@
 {
     "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
     "apiVersion": 2,
-    "name": "acf/CAMBIA_QUESTO",
-    "title": "CAMBIA_QUESTO",
-    "description": "CAMBIA_QUESTO",
+    "name": "acf/faq",
+    "title": "FAQ",
+    "description": "Mostra le FAQ in un layout a fisarmonica.",
     "style": [ 
-        "file:./CAMBIA_QUESTO.css"
+        "file:./faq.css"
     ],
     "script": [
-        "CAMBIA_QUESTO"
+        "faq"
     ],
-    "category": "CAMBIA_QUESTO",
+    "category": "widgets",
     "icon": "",
     "keywords": [
-        "CAMBIA_QUESTO", 
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO"
+        "FAQ", 
+        "Domande Frequenti"
     ],
     "acf": {
         "mode": "edit",
-        "renderTemplate": "CAMBIA_QUESTO.php"
+        "renderTemplate": "faq.php"
     },
     "supports": {
         "anchor": true,

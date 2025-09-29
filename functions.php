@@ -75,6 +75,13 @@ function main_scripts() {
         '1.0', 
         true
     );
+    wp_enqueue_script( 
+        'faq', 
+        get_stylesheet_directory_uri() . '/blocks/faq/faq.js',
+        array('jquery'), 
+        '1.0', 
+        true
+    );
 }
 add_action( 'wp_enqueue_scripts', 'main_scripts' );
 
@@ -83,6 +90,7 @@ if( class_exists('acf') ) {
         register_block_type( __DIR__ . '/blocks/callout' );
         register_block_type( __DIR__ . '/blocks/carousel' );
         register_block_type( __DIR__ . '/blocks/carousel-captions' );
+        register_block_type( __DIR__ . '/blocks/faq' );
         register_block_type( __DIR__ . '/blocks/personal-card' );
         register_block_type( __DIR__ . '/blocks/progress-bar' );
         register_block_type( __DIR__ . '/blocks/testimonial' );
