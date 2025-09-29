@@ -20,17 +20,18 @@ $link = get_field('callout_link');
 ?>
 
 <div id="<?php echo $anchor ?>" class="<?php echo $class_name ?>">
-    <div class="callout">
-        <?php if ( $title ) : ?>
-            <h2 class="callout__title"><?php echo esc_html( $title ); ?></h2>
-        <?php endif; ?>
-        <?php if ( $text ) : ?>
-            <p class="callout__text"><?php echo esc_html( $text ); ?></p>
-        <?php endif; ?>
-        <?php if ( $link ) : ?>
-            <a class="callout__link" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>">
-                <?php echo esc_html( $link['title'] ); ?>
-            </a>
-        <?php endif; ?>
-    </div>
+    <button class="callout__close" type="button" aria-label="Chiudi callout">
+        <span class="callout__close-icon">&times;</span>
+    </button>
+    <?php if ( $title ) : ?>
+        <h2 class="callout__title"><?php echo esc_html( $title ); ?></h2>
+    <?php endif; ?>
+    <?php if ( $text ) : ?>
+        <p class="callout__text"><?php echo esc_html( $text ); ?></p>
+    <?php endif; ?>
+    <?php if ( $link ) : ?>
+        <a class="callout__link" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>">
+            <?php echo esc_html( $link['title'] ); ?>
+        </a>
+    <?php endif; ?>
 </div>

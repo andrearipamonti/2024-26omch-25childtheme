@@ -7,6 +7,9 @@
     "style": [ 
         "file:./callout.css"
     ],
+    "script": [ 
+        "callout"
+    ],
     "category": "widget",
     "icon": "",
     "keywords": [

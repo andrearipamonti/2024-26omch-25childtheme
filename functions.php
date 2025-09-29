@@ -68,6 +68,13 @@ function main_scripts() {
         '1.0', 
         true
     );
+    wp_enqueue_script( 
+        'callout', 
+        get_stylesheet_directory_uri() . '/blocks/callout/callout.js',
+        array('jquery'), 
+        '1.0', 
+        true
+    );
 }
 add_action( 'wp_enqueue_scripts', 'main_scripts' );
 
