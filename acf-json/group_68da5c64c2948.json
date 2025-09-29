@@ -169,10 +169,10 @@
         },
         {
             "key": "field_68da5d0055e92",
-            "label": "Ritarda apertura automatica",
+            "label": "Ritardo apertura automatica (numero in secondi)",
             "name": "auto_open_delay",
             "aria-label": "",
-            "type": "true_false",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
@@ -189,12 +189,14 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
+            "default_value": "",
+            "min": "",
+            "max": "",
             "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_68da5d2a55e94",
@@ -273,5 +275,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1759141249
+    "modified": 1759148468
 }
