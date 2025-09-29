@@ -1,26 +1,25 @@
 {
     "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
     "apiVersion": 2,
-    "name": "acf/CAMBIA_QUESTO",
-    "title": "CAMBIA_QUESTO",
-    "description": "CAMBIA_QUESTO",
+    "name": "acf/hero",
+    "title": "Hero",
+    "description": "Un blocco Hero personalizzato con ACF.",
     "style": [ 
-        "file:./CAMBIA_QUESTO.css"
+        "file:./hero.css"
     ],
     "script": [
-        "CAMBIA_QUESTO"
+        "hero"
     ],
-    "category": "CAMBIA_QUESTO",
+    "category": "layout",
     "icon": "",
     "keywords": [
-        "CAMBIA_QUESTO", 
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO"
+        "Hero", 
+        "Copertina",
+        "Copertina con cta"
     ],
     "acf": {
         "mode": "edit",
-        "renderTemplate": "CAMBIA_QUESTO.php"
+        "renderTemplate": "hero.php"
     },
     "supports": {
         "anchor": true,
