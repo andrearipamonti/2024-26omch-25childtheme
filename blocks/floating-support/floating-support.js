@@ -35,20 +35,21 @@
     function initFloatingSupport() {
         
         // ========================================
-        // EVENT LISTENER PER TRIGGER PRINCIPALE
+        // EVENT LISTENER PER PULSANTE PRINCIPALE
         // ========================================
-        // Il trigger è il pulsante che apre/chiude il pannello
-        $(document).on('click', '.floating-support__trigger', function(e) {
+        // Il pulsante è l'elemento che apre/chiude il pannello
+        $(document).on('click', '.floating-support__button', function(e) {
             e.preventDefault(); // Previene comportamento default del link/button
-            
+
             // ========================================
             // RACCOLTA CONTESTO E STATO CORRENTE
             // ========================================
-            const $trigger = $(this); // Il pulsante cliccato
-            const $floatingSupport = $trigger.closest('.floating-support'); // Il container
+            const $button = $(this); // Il pulsante cliccato
+            const $floatingSupport = $button.closest('.floating-support'); // Il container
             
-            // CONTROLLO STATO: verifica se il pannello è già aperto
-            const isOpen = $floatingSupport.hasClass('is-open');
+            // CONTROLLO STATO: verifica se il pannello è già aperto tramite ARIA
+            const $panel = $floatingSupport.find('.floating-support__panel');
+            const isOpen = $panel.attr('aria-hidden') === 'false';
             
             // ========================================
             // LOGICA TOGGLE CON GESTIONE MULTIPLI
@@ -59,8 +60,11 @@
             } else {
                 // Se è chiuso, prima chiudi tutti gli altri pannelli aperti
                 // (comportamento comune nei sistemi multi-pannello)
-                $('.floating-support.is-open').each(function() {
-                    closeSupportPanel($(this));
+                $('.floating-support').each(function() {
+                    const $otherPanel = $(this).find('.floating-support__panel');
+                    if ($otherPanel.attr('aria-hidden') === 'false') {
+                        closeSupportPanel($(this));
+                    }
                 });
                 
                 // Poi apri questo pannello
@@ -94,8 +98,11 @@
             if (!$target.closest('.floating-support').length) {
                 
                 // Chiudi tutti i pannelli aperti
-                $('.floating-support.is-open').each(function() {
-                    closeSupportPanel($(this));
+                $('.floating-support').each(function() {
+                    const $panel = $(this).find('.floating-support__panel');
+                    if ($panel.attr('aria-hidden') === 'false') {
+                        closeSupportPanel($(this));
+                    }
                 });
             }
         });
@@ -106,8 +113,11 @@
         $(document).on('keydown', function(e) {
             if (e.key === 'Escape') {
                 // Chiudi tutti i pannelli aperti quando si preme ESC
-                $('.floating-support.is-open').each(function() {
-                    closeSupportPanel($(this));
+                $('.floating-support').each(function() {
+                    const $panel = $(this).find('.floating-support__panel');
+                    if ($panel.attr('aria-hidden') === 'false') {
+                        closeSupportPanel($(this));
+                    }
                 });
             }
         });
@@ -130,10 +140,14 @@
         }
         
         // ========================================
-        // AGGIORNAMENTO STATO VISIVO
+        // AGGIORNAMENTO STATO VISIVO CON ARIA
         // ========================================
-        // Aggiunge classe CSS per styling e animazioni
-        $floatingSupport.addClass('is-open');
+        // Aggiorna attributi ARIA per accessibilità (il CSS usa questi per lo styling)
+        const $button = $floatingSupport.find('.floating-support__button');
+        const $panel = $floatingSupport.find('.floating-support__panel');
+        
+        $button.attr('aria-expanded', 'true');
+        $panel.attr('aria-hidden', 'false');
         
         // ========================================
         // GESTIONE FOCUS PER ACCESSIBILITÀ
@@ -169,21 +183,26 @@
         }
         
         // ========================================
-        // AGGIORNAMENTO STATO VISIVO
+        // AGGIORNAMENTO STATO VISIVO CON ARIA
         // ========================================
-        // Rimuove la classe che rende visibile il pannello
-        $floatingSupport.removeClass('is-open');
+        // Il CSS usa gli attributi ARIA per controllare la visibilità
+        
+        // Aggiorna attributi ARIA per accessibilità
+        const $button = $floatingSupport.find('.floating-support__button');
+        const $panel = $floatingSupport.find('.floating-support__panel');
+        
+        $button.attr('aria-expanded', 'false');
+        $panel.attr('aria-hidden', 'true');
         
         // ========================================
         // GESTIONE FOCUS DI RITORNO
         // ========================================
-        // Trova il trigger che ha aperto il pannello per ripristinare il focus
-        const $trigger = $floatingSupport.find('.floating-support__trigger');
+        // Il pulsante è già stato trovato sopra, riusiamo la variabile
         
-        // Ripristina il focus sul trigger dopo la chiusura
-        if ($trigger.length) {
+        // Ripristina il focus sul pulsante dopo la chiusura
+        if ($button.length) {
             setTimeout(function() {
-                $trigger.focus(); // Focus di ritorno per navigazione da tastiera
+                $button.focus(); // Focus di ritorno per navigazione da tastiera
             }, 300);
         }
         
