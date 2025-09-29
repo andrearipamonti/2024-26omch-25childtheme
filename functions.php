@@ -73,6 +73,7 @@ add_action( 'wp_enqueue_scripts', 'main_scripts' );
 
 if( class_exists('acf') ) {
     function register_acf_blocks() {
+        register_block_type( __DIR__ . '/blocks/callout' );
         register_block_type( __DIR__ . '/blocks/carousel' );
         register_block_type( __DIR__ . '/blocks/carousel-captions' );
         register_block_type( __DIR__ . '/blocks/personal-card' );

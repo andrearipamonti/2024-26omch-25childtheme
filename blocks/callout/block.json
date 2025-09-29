@@ -1,26 +1,21 @@
 {
     "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
     "apiVersion": 2,
-    "name": "acf/CAMBIA_QUESTO",
-    "title": "CAMBIA_QUESTO",
-    "description": "CAMBIA_QUESTO",
+    "name": "acf/callout",
+    "title": "Callout",
+    "description": "Un blocco per mostrare un callout con titolo, testo e link.",
     "style": [ 
-        "file:./CAMBIA_QUESTO.css"
+        "file:./callout.css"
     ],
-    "script": [
-        "CAMBIA_QUESTO"
-    ],
-    "category": "CAMBIA_QUESTO",
+    "category": "widget",
     "icon": "",
     "keywords": [
-        "CAMBIA_QUESTO", 
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO",
-        "CAMBIA_QUESTO"
+        "Callout", 
+        "informazioni"
     ],
     "acf": {
         "mode": "edit",
-        "renderTemplate": "CAMBIA_QUESTO.php"
+        "renderTemplate": "callout.php"
     },
     "supports": {
         "anchor": true,
