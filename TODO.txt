@@ -5,5 +5,6 @@ Floating Support
 Hero
 Modal
 Star Rating
+Weather Widget
 
 Oltre a questi pensa a 2 blocchi custom da realizzare, uno deve avere minima parte di JS.
